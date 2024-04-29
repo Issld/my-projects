@@ -1,0 +1,6 @@
+<RCC>
+    <qresource prefix="/new">
+        <file>img/foto_large.jpg</file>
+    </qresource>
+    <qresource prefix="/next"/>
+</RCC>
