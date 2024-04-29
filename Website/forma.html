@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Иван Сидоров">
+	<meta name="keywords" content="BigData">
+    <title>Опрос</title>
+    <link rel="stylesheet" href="style_2.css">
+    <div id="header">
+    <div class="gallery">
+        <img src="big_data_1.jpg" alt="Image 1" class="gallery-image" width="120%" height="auto">
+        <img src="big_data_2.jpg" alt="Image 2" class="gallery-image" width="120%" height="auto">
+        <img src="big_data_3.jpg" alt="Image 3" class="gallery-image" width="120%" height="auto">
+    </div>
+    <script src="script.js"></script>
+    <div class="overlay-top" id = "yourElementId">
+        <p>Большие данные</p>
+    </div>
+    <div class="overlay-bottom">
+        <p>Опрос пользователя</p>
+    </div>
+</div>
+    <style>
+        body {
+            background-color: #f9e8d1;
+        }
+    </style>
+</head>
+<body>
+<form id="myForm" method="POST" action="/cgi-bin/tableOutput.py" target="_blank">
+    <h2>Заполните форму и нажмите кнопку</h2>
+    <p><table>
+        <tr>
+            <th align="left">Фамилия:</th>
+            <td> <input type="text" name="surname"></td>
+        </tr>
+        <tr>
+            <th align="left">Имя:</th>
+            <td> <input type="text" name="name"></td>
+        </tr>
+        <tr>
+            <th align="left">Отчество:</th>
+            <td> <input type="text" name="patr"></td>
+        </tr>
+        <tr>
+            <th align="left">Для чего вы планируете использовать технологию Big Data:</th>
+            <td><table>
+                <tr><td><input type="radio" name="worktype" value="Аналитика данных">Аналитика данных</td>
+                <td><input type="radio" name="worktype" value="Машинное обучение">Машинное обучение</td>
+                <td><input type="radio" name="worktype" value="Прогнозирование событий">Прогнозирование событий</td>
+                <td><input type="radio" name="worktype" value="Другое">Другое</td></tr>
+            </table></td>
+        </tr>
+        <tr>
+            <th align="left">Используемые технологии:</th>
+            <td><table>
+                <tr><td><input type="checkbox" name="technology" value="Обработка транзакций">Обработка транзакций</td>
+                <td><input type="checkbox" name="technology" value="Запросы и отчеты">Запросы и отчеты</td>
+                <td><input type="checkbox" name="technology" value="New SQL">New SQL</td>
+                <td><input type="checkbox" name="technology" value="Документная СУБД">Документная СУБД</td>
+                <td><input type="checkbox" name="technology" value="Резидентная СУБД">Резидентная СУБД</td></tr>
+            </table></td>
+        </tr>
+        <tr>
+            <th align="left">Используемое ПО:</th>
+            <td><table>
+                <tr><td><input type="radio" name="software" value="apache.png"><img src="apache.png" width="30%" height="auto"></td>
+                <td><input type="radio" name="software" value="mongo.png"><img src="mongo.png" width="30%" height="auto"></td></tr>
+            </table></td>
+        </tr>
+        <tr>
+            <th align="left">Информация о учащемся:</th>
+            <td><select name="role">
+                <option>Школьник</option>
+                <option>Студент</option>
+                <option>Интересующийся</option>
+                <option>Преподаватель</option>
+            </select></td>
+        </tr>
+        <tr>
+            <th align="left">Комментарий с пожеланиями:</th>
+            <td><textarea name="comment" cols="30" rows="2"></textarea></td>
+        </tr>
+        <tr>
+            <td colspan="2" align="center">
+                <input type="submit" value="ОТПРАВИТЬ">
+            </td>
+        </tr>
+    </table></p>
+</form>
+<hr>
+<div class="links">
+    <a href="index.html">Основные сведения</a>
+    <a href="second.html">История</a>
+    <a href="third.html">Источники</a>
+    <a href="forma.html">Опрос</a>
+    <a href="main.php">Благодарность</a>
+</div>
+<hr>
+<div id="footer" align="center">Сидоров Иван, 4131</div>
+<script>
+    document.getElementById('myForm').addEventListener('submit', function(event) {
+        event.preventDefault();
+        var form = this;
+        var formData = new FormData(form);
+        var checkboxValues = [];
+        var checkboxes = form.querySelectorAll('input[type=checkbox][name=technology]:checked');
+        checkboxes.forEach(function(checkbox) {
+            checkboxValues.push(checkbox.value);
+        });
+        var technologies = checkboxValues.join(', ');
+        formData.set('technology', technologies);
+        var xhr = new XMLHttpRequest();
+        xhr.open(form.method, form.action, true);
+        xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+            var responseText = xhr.responseText;
+            var newDocument = document.implementation.createHTMLDocument('');
+            newDocument.documentElement.innerHTML = responseText;
+            document.open();
+            document.write(newDocument.documentElement.innerHTML);
+            document.close();
+            }
+        };
+        xhr.send(formData);
+    });
+</script>
+</body>
+</html>

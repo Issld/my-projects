@@ -1,0 +1,100 @@
+.custom-table {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 1rem;
+    background-color: #f0f0f0;
+}
+
+.custom-table th,
+.custom-table td {
+    padding: 0.75rem;
+    vertical-align: top;
+    border-top: 1px solid #eceeef;
+}
+
+.custom-table thead th {
+    vertical-align: bottom;
+    border-bottom: 2px solid #eceeef;
+}
+
+.custom-table tbody + tbody {
+    border-top: 2px solid #eceeef;
+}
+
+.custom-table .table {
+    background-color: #fff;
+}
+
+.custom-table-sm th,
+.custom-table-sm td {
+    padding: 0.3rem;
+}
+
+.custom-table-bordered {
+    border: 1px solid #eceeef;
+}
+
+.custom-table-bordered th,
+.custom-table-bordered td {
+    border: 1px solid #eceeef;
+}
+
+.custom-table-bordered thead th,
+.custom-table-bordered thead td {
+    border-bottom-width: 2px;
+}
+
+.custom-table-striped tbody tr:nth-of-type(odd) {
+    background-color: rgba(0, 0, 0, 0.05);
+}
+
+.custom-table-hover tbody tr:hover {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+.custom-table-active,
+.custom-table-active > th,
+.custom-table-active > td {
+    background-color: rgba(0, 0, 0, 0.075);
+}
+
+#header .links {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 99%;
+    background-color: rgb(249,232,209);
+    color: black;
+    padding: 10px;
+}
+
+.links {
+    display: flex;
+    justify-content: space-around;
+    background-color: #f9e8d1;
+}
+
+.links a {
+    flex: 1;
+    text-align: center;
+    color: black;
+    text-decoration: none;
+    padding-left: 50px;
+    padding-right: 30px;
+}
+
+.links a:hover {
+    color: blue;
+}
+a:visited{
+    color:black;
+}
+
+hr {
+    background-color: gray;
+    height: 1px;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+}
