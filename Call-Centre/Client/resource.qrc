@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/res">
+        <file>image/pdf.jpg</file>
+        <file>image/open.png</file>
+        <file>image/close.png</file>
+    </qresource>
+</RCC>
