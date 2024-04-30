@@ -22,12 +22,12 @@ sem_t semB, semK, semG, semM, semD, semH, semAllow_1, semAllow_2, semAllow_3;
 
 int err;
 
-const char* lab2_unsynchronized_threads()
+const char* unsynchronized_threads()
 {
     return "bcdf";
 }
 
-const char* lab2_sequential_threads()
+const char* sequential_threads()
 {
     return "bkgm";
 }
@@ -312,13 +312,15 @@ void *thread_p(void *ptr)
     return ptr;
 }
 
-int lab2_init()
+int main()
 {
     // initilize mutex
     if (pthread_mutex_init(&lock, NULL) != 0) {
         std::cerr << "Mutex init failed" << std::endl;
         return 1;
     }
+    std::cout << "Не синхронизированные потоки" << unsynchronized_threads << std::endl;
+    std::cout << "Cинхронизированные потоки" << sequential_threads << std::endl;
     // initialize semaphores
     // THIS CODE WILL NOT RUN ON MacOS!
     // MacOS doesn't support unnamed semaphores, so named semaphores should be used instead
