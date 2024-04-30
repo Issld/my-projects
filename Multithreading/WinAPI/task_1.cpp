@@ -1,9 +1,4 @@
 #include <windows.h>
-#include "lab3.h"
-
-//
-// lab3 code should be located here!
-//
 
 #define NUMBER_OF_THREADS 11
 
